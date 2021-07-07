@@ -1,23 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Web.Http;
-using MySql.Data.MySqlClient;
+
 namespace todoWebAPI
 {
     public static class WebApiConfig
     {
-        //database connectivity
-        public static MySqlConnection conn()
-        {
-            string sqlConfig = "server=localhost; port=3306; database=todo; username=root;";
-            MySqlConnection conn = new MySqlConnection(sqlConfig);
-            return conn;
-        }
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-
+            //this shows in json format samething is done here: config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+            /* var json = config.Formatters.JsonFormatter;
+             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+             config.Formatters.Remove(config.Formatters.XmlFormatter);*/
             // Web API routes
             config.MapHttpAttributeRoutes();
 
@@ -26,6 +23,7 @@ namespace todoWebAPI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
         }
     }
 }
