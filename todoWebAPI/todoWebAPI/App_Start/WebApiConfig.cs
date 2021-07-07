@@ -11,10 +11,12 @@ namespace todoWebAPI
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+
             //this shows in json format samething is done here: config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
             /* var json = config.Formatters.JsonFormatter;
              json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
              config.Formatters.Remove(config.Formatters.XmlFormatter);*/
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 
