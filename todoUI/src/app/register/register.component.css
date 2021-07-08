@@ -1,0 +1,9 @@
+.form{
+    justify-content: center;
+    border : 0.07em solid black;
+    margin-top: 5em;
+    padding: 3em;
+}
+.form-title{
+    text-align: center;
+}
