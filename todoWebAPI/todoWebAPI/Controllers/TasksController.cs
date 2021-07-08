@@ -23,58 +23,45 @@ namespace todoWebAPI.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.OK, e);
             }
         }
-
-       /* public HttpResponseMessage Get(int id)
-        {
-            DataTable dt = new DataTable();
-            try
-            {
-                dt = task.taskInformation(id);
-                return Request.CreateResponse(HttpStatusCode.OK, dt);
-            }
-            catch (Exception e)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.OK, e);
-            }
-        }
-
         public string Post(Tasks taskData)
         {
             try
             {
-                task.addTasks();
-                return "Data Added successfully !!";
+                task.addTasks(taskData);
+                return "Data added Successfully!";
             }
             catch (Exception e)
             {
-                return "Failed to insert data: Exception :" + e;
+                return "exception occured:" + e;
             }
         }
 
-        public string Put(Tasks taskData)
+        public string Put (Tasks taskData)
         {
             try
             {
-                task.updateTask(taskData);
-                return "Updated Data successfull";
-            }
-            catch (Exception e)
+              
+                task.updateTasks(taskData);
+                return ("Task Updated Successfully");
+            }catch(Exception e)
             {
-                return "Failed to Update data: Exception :" + e;
+                return ("Exception occured:" + e);
             }
         }
 
-        public string Delete(Tasks taskData)
+        public string Patch(Tasks taskData)
         {
             try
             {
-                task.deleteTask(taskData);
-                return "Task Removed Successfully";
+             
+                task.taskComplete(taskData);
+                return ("Task Status updated!");
             }
             catch (Exception e)
             {
-                return "Delete Failed";
+                return ("Exception Occured:" + e);
             }
-        }*/
+        }
+
     }
 }

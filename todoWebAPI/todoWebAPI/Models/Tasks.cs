@@ -12,64 +12,88 @@ namespace todoWebAPI.Models
 
         public Tasks () { }
 
+        public Tasks (int taskId,string taskName) {
+            this.taskId = taskId;
+            this.taskName = taskName;
+       
+        }
+
+        public Tasks(int taskId, bool isCompleted)
+        {
+            this.taskId = taskId;
+            this.isCompleted = isCompleted;
+
+        }
+        public Tasks (int userId, string taskName, bool isCompleted)
+        {
+            this.userId = userId;
+            this.taskName = taskName;
+            this.isCompleted = isCompleted;
+        }
+
+        public Tasks(int tasksId, int userId, string taskName, bool isCompleted)
+        {
+            this.taskId = taskId;
+            this.userId = userId;
+            this.taskName = taskName;
+            this.isCompleted = isCompleted;
+        }
+
         public DataTable listTasks( int userId)
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT taskId, taskName, isCompleted FROM tasks WHERE userId=@userId", con);
+            string query = @"SELECT taskId, taskName, isCompleted FROM tasks WHERE userId=@userId";
+            MySqlCommand cmd = new MySqlCommand(query, con);
             cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Add("@userId", MySqlDbType.Int32, sizeof(Int32)).Value = userId;
+            cmd.Parameters.Add("@userId", MySqlDbType.Int32).Value = userId;
             MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             return dt;
         }
-
-        /*public void addUser(Users user)
+   
+        public void addTasks (Tasks task)
         {
-            string query = @"Insert into users (userName,password) values(@userName, @password)";
+            string query = @"INSERT into tasks (userId,taskName,isCompleted) values(@userId,@taskName,@isCompleted)";
             MySqlCommand cmd = new MySqlCommand(query, con);
-            cmd.Parameters.Add("@userName", MySqlDbType.VarChar, 500).Value = user.userName;
-            cmd.Parameters.Add("@password", MySqlDbType.VarChar, 500).Value = user.password;
+            cmd.Parameters.Add("@userId", MySqlDbType.Int32).Value = task.userId;
+            cmd.Parameters.Add("@taskName", MySqlDbType.VarChar, 500).Value = task.taskName;
+            cmd.Parameters.Add("@isCompleted", MySqlDbType.UInt64).Value = task.isCompleted;
             cmd.CommandType = CommandType.Text;
             MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);
         }
 
-        public void updateUser(Users user)
-        {
-            string query = @"Update Users set userName = @userName where userId = @userId";
+        public void updateTasks (Tasks task) {
+            string query = @"Update tasks set taskName = @taskName where taskId = @taskId";
             MySqlCommand cmd = new MySqlCommand(query, con);
-            cmd.Parameters.Add("@userName", MySqlDbType.VarChar, 500).Value = user.userName;
-            cmd.Parameters.Add("@userId", MySqlDbType.Int32, sizeof(Int32)).Value = user.userId;
+            cmd.Parameters.Add("@taskId", MySqlDbType.Int32).Value = task.taskId;
+            cmd.Parameters.Add("@taskName", MySqlDbType.VarChar, 500).Value = task.taskName;
+            cmd.CommandType = CommandType.Text;
+            MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+
+        }
+        public void deleteTasks (Tasks task) {
+            string query = @"Delete from tasks where taskId = @taskId";
+            MySqlCommand cmd = new MySqlCommand(query, con);
+            cmd.Parameters.Add("@taskId", MySqlDbType.Int32).Value = task.taskId;
+            cmd.CommandType = CommandType.Text;
+            MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+
+        }
+        public void taskComplete(Tasks task) {
+            string query = @"UPDATE tasks set isCompleted = @isCompleted WHERE taskId = @taskId";
+            MySqlCommand cmd = new MySqlCommand(query, con);
+            cmd.Parameters.Add("@taskId", MySqlDbType.Int32).Value =task.taskId;
+            cmd.Parameters.Add("@isCompleted", MySqlDbType.UInt64).Value =task.isCompleted;
             cmd.CommandType = CommandType.Text;
             MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);
         }
-
-        public void deleteUser(Users user)
-        {
-            string query = @"Delete from Users where userId = @userId";
-            MySqlCommand cmd = new MySqlCommand(query, con);
-            cmd.Parameters.Add("@userId", MySqlDbType.Int32, sizeof(Int32)).Value = user.userId;
-            cmd.CommandType = CommandType.Text;
-            MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-        }
-
-        public DataTable userInformation(int uid)
-        {
-            string query = @"SELECT userId, userName FROM Users where userId = @userId";
-            MySqlCommand cmd = new MySqlCommand(query, con);
-            cmd.Parameters.Add("@userId", MySqlDbType.Int32, sizeof(Int32)).Value = uid;
-            cmd.CommandType = CommandType.Text;
-            MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            return dt;
-
-        }
-*/
     }
 }
