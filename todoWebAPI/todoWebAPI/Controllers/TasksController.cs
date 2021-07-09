@@ -63,6 +63,19 @@ namespace todoWebAPI.Controllers
                 return ("Exception Occured:" + e);
             }
         }
+        public string Delete(int Id)
+        {
+            try
+            {
+                Tasks taskData = new Tasks(Id);
+                task.deleteTasks(taskData);
+                return "User Deleted Successfully";
+            }
+            catch (Exception e)
+            {
+                return "Delete Failed, Exception: " + e;
+            }
+        }
 
     }
 }

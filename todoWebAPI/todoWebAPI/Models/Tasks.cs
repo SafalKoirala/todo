@@ -11,7 +11,8 @@ namespace todoWebAPI.Models
         public bool isCompleted { get; set; }
 
         public Tasks () { }
-
+        public Tasks (int taskId) { this.taskId = taskId; }
+        
         public Tasks (int taskId,string taskName) {
             this.taskId = taskId;
             this.taskName = taskName;
@@ -31,7 +32,7 @@ namespace todoWebAPI.Models
             this.isCompleted = isCompleted;
         }
 
-        public Tasks(int tasksId, int userId, string taskName, bool isCompleted)
+        public Tasks(int taskId, int userId, string taskName, bool isCompleted)
         {
             this.taskId = taskId;
             this.userId = userId;

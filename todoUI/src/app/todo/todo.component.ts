@@ -9,17 +9,42 @@ import { TodoService } from '../todo.service';
 export class TodoComponent implements OnInit {
 
   constructor(private service:TodoService) { }
-  users:object;
+  tasks:object;
   ngOnInit() {
-    this.refreshUsers();
+    this.refreshTasks();
   }
-  refreshUsers(){
-    this.service.listUsers().subscribe(data=>{
-      this.users=data;  
-      console.log(this.users);
+  refreshTasks(){
+    this.service.listTasks().subscribe(data=>{
+      this.tasks=data;  
+      console.log(this.tasks);
     });
   }
- 
-  
+  editTasks(task){
 
+     this.service.updateTasks(task).subscribe(status=>{
+      this.refreshTasks();
+     });
+  }   
+  //add task
+  makeTasks(task){
+    console.log(task);
+    this.service.addTasks(task).subscribe(status=>{
+      task.taskName ="";
+     
+      this.refreshTasks();
+      
+     }); 
+  }
+  //delete
+  removeTask(task){
+    this.service.deleteTask(task.taskId).subscribe(status=>{
+      this.refreshTasks();
+    });
+  }
+  //Task done
+  doneTask(task){
+    this.service.completedTask(task).subscribe(status=>{
+      this.refreshTasks();
+    });
+  }
 }

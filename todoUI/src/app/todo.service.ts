@@ -10,11 +10,27 @@ readonly baseUrl = "http://localhost:52121/api";
 
   constructor(private http : HttpClient) { }
 
-    listUsers(){
-      return this.http.get(this.baseUrl+'/Users');
+    listTasks(){
+      return this.http.get(this.baseUrl+'/Tasks/'+1);
     }
 
-    
+    updateTasks(task){
+      return this.http.put(this.baseUrl+'/Tasks',task);
+
+    }
+
+    addTasks(task){
+      console.log("from service");
+      console.log(task);
+      return this.http.post(this.baseUrl+'/Tasks',task);
+    }
+
+    deleteTask(id){
+      return this.http.delete(this.baseUrl+'/Tasks/'+id);
+    }
+    completedTask(task){
+      return this.http.patch(this.baseUrl+'/Tasks',task);
+    }
 
   
 }
