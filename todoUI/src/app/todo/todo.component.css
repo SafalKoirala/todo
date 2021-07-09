@@ -1,0 +1,18 @@
+/* Include the padding and border in an element's total width and height */
+* {
+    box-sizing: border-box;
+  }
+  .container-fluid{
+      justify-content: center;
+      padding: 2em;
+      display: flex;
+      justify-content: center
+  }
+  li{
+      list-style: none;
+     }
+  
+  p{
+     text-align: center;
+ }
+ 

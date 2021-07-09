@@ -1,12 +1,51 @@
-<table>
-    <thead>
-        <tr><th>UserName</th></tr>
-    </thead>
-    <tbody><tr *ngFor = "let userData of users">
-   <td>
-       
-       {{userData.userName}}
-   </td>     
-    </tr></tbody>
-</table>
+  <div class="container-fluid">
+
+    <input type="text" id="myInput" placeholder="Todo">
+    <button onclick="newElement()" class="btn btn-primary">Add</button>
+  </div>
+  <div class="container-fluid">
+    <div class="d-flex ">
+        <!-- todo box -->
+        <div class="col">
+            <div class="col col-todo">
+                <p>TASKS TO DO</p>
+                <ul id="myUL" class="list-group" *ngFor = "let userData of users">
+                    <li class="list-group-item">
+                        <div class="d-flex">
+                            <div class="p-2 mr-auto">{{userData.userName}}</div>
+                            <div class="p-2 "><button class="btn btn-outline-dark"> EDIT</button></div>
+                            <div class="p-2 "> <button class="btn btn-outline-danger">Delete</button></div>
+                        </div>                  
+                  </li>
+                   
+                </ul>    
+            </div>
+
+        </div>
+        
+        <!-- Completed Box -->
+        <div class="col">
+            <div class="col col-todo">
+                <p>TASKS COMPLETED</p>
+                <ul id="myUL" class="list-group" *ngFor = "let userData of users">
+                    <li class="list-group-item">
+                        <div class="d-flex">
+                            <div class="p-2 mr-auto">make  presentation</div>
+                            <div class="p-2 "> <button class="btn btn-outline-danger">Delete</button></div>
+                        </div>                  
+                  </li>
+                   
+                </ul>    
+            </div>
+
+        </div>
+        
+    </div> 
+  </div> 
+   
+  
+ 
+ 
+  
+ 
 
