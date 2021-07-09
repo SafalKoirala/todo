@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TodoService } from '../todo.service';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service:TodoService) { }
+  users: object;
 
   ngOnInit() {
+    this.addUser();
   }
-
+  addUser(){   
+      // return this.http.post(this.baseUrl+'/Users',val); 
+  }
 }

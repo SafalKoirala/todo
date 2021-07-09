@@ -6,14 +6,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TodoService {
-readonly APIUrl = "http://localhost:52121/api";
+readonly baseUrl = "http://localhost:52121/api";
 
   constructor(private http : HttpClient) { }
 
     listUsers(){
-      return this.http.get(this.APIUrl+'/Users');
+      return this.http.get(this.baseUrl+'/Users');
     }
 
+    
 
   
 }
