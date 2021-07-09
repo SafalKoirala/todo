@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { TodoComponent } from './todo/todo.component';
+import { HttpClientModule } from '@angular/common/http';
+import { TodoService } from './todo.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { TodoComponent } from './todo/todo.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace todoWebAPI
 {
@@ -12,10 +13,10 @@ namespace todoWebAPI
         {
             // Web API configuration and services
 
-            //this shows in json format samething is done here: config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
-            /* var json = config.Formatters.JsonFormatter;
-             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
-             config.Formatters.Remove(config.Formatters.XmlFormatter);*/
+            //this shows in json format same thing is done here: config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+            var json = config.Formatters.JsonFormatter;
+            json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -25,7 +26,9 @@ namespace todoWebAPI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+            /*config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));*/
+            config.EnableCors(new EnableCorsAttribute("http://localhost:4200", "*", "*"));
         }
+           
     }
 }

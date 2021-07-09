@@ -96,3 +96,6 @@ E:\myProjects\todoWebAPI\todoWebAPI\todoWebAPI\obj\Debug\todoWebAPI.csproj.CoreC
 E:\myProjects\todoWebAPI\todoWebAPI\todoWebAPI\obj\Debug\todoWebAPI.csproj.CopyComplete
 E:\myProjects\todoWebAPI\todoWebAPI\todoWebAPI\obj\Debug\todoWebAPI.dll
 E:\myProjects\todoWebAPI\todoWebAPI\todoWebAPI\obj\Debug\todoWebAPI.pdb
+E:\myProjects\todoWebAPI\todoWebAPI\todoWebAPI\bin\System.Web.Cors.dll
+E:\myProjects\todoWebAPI\todoWebAPI\todoWebAPI\bin\System.Web.Http.Cors.dll
+E:\myProjects\todoWebAPI\todoWebAPI\todoWebAPI\bin\System.Web.Http.Cors.xml

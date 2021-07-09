@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TodoService } from '../todo.service';
 
 @Component({
   selector: 'app-todo',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private service:TodoService) { }
+  users:object;
   ngOnInit() {
+    this.refreshUsers();
   }
+  refreshUsers(){
+    this.service.listUsers().subscribe(data=>{
+      this.users=data;  
+      console.log(this.users);
+    });
+  }
+  
 
 }

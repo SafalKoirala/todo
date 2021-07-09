@@ -1,1 +1,11 @@
-<p>todo works!</p>
+<table>
+    <thead>
+        <tr><th>UserName</th></tr>
+    </thead>
+    <tbody><tr *ngFor = "let userData of users">
+   <td>
+       
+       {{userData.userName}}
+   </td>     
+    </tr></tbody>
+</table>
